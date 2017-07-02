@@ -1,0 +1,40 @@
+version: '3'
+services:
+
+  redis:
+    image: redis:3.2-alpine
+    environment:
+      - ULIMIT=65536
+    volumes:
+      - configuration/redis:/usr/local/etc/redis
+      - data/redis:/data
+    expose:l
+      - "6379"
+
+  rabbitmq:
+    image: rabbitmq:3-alpine
+    environment:
+      - ULIMIT=65536
+      - RABBITMQ_DEFAULT_VHOST=sensu
+      - RABBITMQ_DEFAULT_USER=sensu
+      - RABBITMQ_DEFAULT_PASS=secret
+#    env_file:
+#      - env_file.env
+    volumes:
+      - data/rabbitmq:/var/lib/rabbitmq
+    ports:
+      - "5672"
+
+  sensu:
+    build: ./Sensu
+    depends_on:
+      - rabbitmq
+      - redis
+    environment:
+      - SENSU_METRICS=false
+    volumes:
+      - /usr/local/etc/sensu-docker:/usr/local/etc/sensu-docker
+      - /var/log/sensu:/var/log/sensu
+      - /etc/sensu/conf.d:/etc/sensu/conf.d
+    ports:
+      - "3000:3000"
