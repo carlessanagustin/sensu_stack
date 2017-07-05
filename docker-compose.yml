@@ -31,7 +31,6 @@ services:
 
   sensu-server:
     image: sensustack_sensu
-    #build: ./application/sensu-server/.
     environment:
       - LOG_LEVEL=debug
     volumes:
@@ -45,7 +44,6 @@ services:
 
   sensu-client:
     image: sensustack_sensu
-    #build: ./application/sensu-client/.
     volumes:
       - ./configuration/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/sensu_ssl:ro
@@ -71,7 +69,8 @@ services:
     image: uchiwa/uchiwa
     volumes:
       - ./configuration/sensu-dashboard:/config
+      - ./sensu_ssl_tool:/etc/sensu_ssl:ro
     depends_on:
       - sensu-api
     ports:
-      - "3000:3000"
+      - "443:3000"

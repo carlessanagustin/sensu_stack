@@ -16,10 +16,6 @@
     "loglevel": "warn",
     "user": "admin",
     "pass": "secret",
-    "refresh": 10,
-    "ssl": {
-      "certfile": "/etc/sensu_ssl/uchiwa.pem",
-      "keyfile": "/etc/sensu_ssl/uchiwa.key"
-    }
+    "refresh": 10
   }
 }

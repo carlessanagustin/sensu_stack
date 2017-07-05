@@ -3,6 +3,7 @@
     "host": "rabbitmq",
     "port": 5671,
     "heartbeat": 30,
+    "prefetch": 50,
     "vhost": "/sensu",
     "user": "sensu",
     "password": "secret",
