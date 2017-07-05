@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "check_cpu_usage": {
+      "command": "/usr/local/bin/check-cpu.rb",
+      "interval": 30,
+      "subscribers": [
+        "basic"
+      ],
+      "handlers": [
+        "mailer"
+      ]
+    }
+  }
+}

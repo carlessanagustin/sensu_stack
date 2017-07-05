@@ -1,0 +1,21 @@
+{
+  "sensu": [
+    {
+      "name": "Sensu API 1",
+      "host": "sensu-api",
+      "port": 4567,
+      "ssl": false,
+      "timeout": 10,
+      "user": "sensu",
+      "pass": "secret"
+    }
+  ],
+  "uchiwa": {
+    "host": "0.0.0.0",
+    "port": 3000,
+    "loglevel": "warn",
+    "user": "admin",
+    "pass": "secret",
+    "refresh": 10
+  }
+}

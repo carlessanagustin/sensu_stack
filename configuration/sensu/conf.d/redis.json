@@ -1,7 +1,9 @@
 {
   "redis": {
-    "host": "regis",
+    "host": "redis",
     "port": 6379,
-    "auto_reconnect": true
+    "auto_reconnect": true,
+    "db": 0,
+    "reconnect_on_error": true
   }
 }

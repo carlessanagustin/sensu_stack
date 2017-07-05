@@ -1,0 +1,16 @@
+[
+  {rabbit, [
+    { loopback_users, [ ] },
+    { tcp_listeners, [ 5672 ] },
+    { ssl_listeners, [ 5671 ] },
+    { ssl_options, [{cacertfile,"/etc/sensu_ssl/sensu_ca/cacert.pem"},
+                  {certfile,"/etc/sensu_ssl/server/cert.pem"},
+                  {keyfile,"/etc/sensu_ssl/server/key.pem"},
+                  {verify,verify_peer},
+                  {fail_if_no_peer_cert,false}]},
+    { default_pass, <<"secret">> },
+    { default_user, <<"sensu">> },
+    { default_vhost, <<"/sensu">> },
+    { hipe_compile, false }
+   ]}
+].

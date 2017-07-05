@@ -1,5 +1,18 @@
-FROM sensu
+FROM golang:1.6.3-alpine
+# url: https://github.com/sensu/uchiwa
 
-RUN apt-get -y install uchiwa
+# golang alpine doesn't have ONBUILD, do it manually, then run npm and cleanup
+COPY . /go/src/github.com/sensu/uchiwa
+WORKDIR /go/src/github.com/sensu/uchiwa
+RUN apk add --no-cache nodejs git && \
+    go install -v && \
+    npm install --production --unsafe-perm && \
+    npm dedupe && \
+    apk del --no-cache git nodejs && \
+    rm -rf /go/src/github.com/sensu/uchiwa/node_modules
 
-CMD    ["/opt/uchiwa/bin/uchiwa"]
+VOLUME /config
+
+CMD ["/go/bin/uchiwa", "-c", "/config/config.json"]
+
+EXPOSE 3000

@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "check_sshd_usage": {
+      "command": "/usr/local/bin/check-process.rb -p 'sshd -D'",
+      "interval": 60,
+      "subscribers": [
+        "security"
+      ],
+      "handlers": [
+        "twiliosms"
+      ]
+    }
+  }
+}

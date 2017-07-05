@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "check_ram": {
+      "command": "/usr/local/bin/check-ram.rb -w 70 -c 95",
+      "interval": 30,
+      "subscribers": [
+        "basic"
+      ],
+      "handlers": [
+        "mailer"
+      ]
+    }
+  }
+}

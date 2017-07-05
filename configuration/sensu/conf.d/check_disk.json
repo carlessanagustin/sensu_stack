@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "check_disk_usage": {
+      "command": "/usr/local/bin/check-disk-usage.rb -w 75 -c 90",
+      "interval": 60,
+      "subscribers": [
+        "basic"
+      ],
+      "handlers": [
+        "mailer"
+      ]
+    }
+  }
+}

@@ -16,6 +16,12 @@
 * Datastore
   * Redis
 
+## Reference Documentation
+
+* Sensu configuration: https://sensuapp.org/docs/latest/reference/configuration.html
+* Uchiwa configuration: https://docs.uchiwa.io/getting-started/configuration/#uchiwa-configuration
+* Uchiwa docker: https://hub.docker.com/r/uchiwa/uchiwa/
+
 # left at...
 
 ```shell

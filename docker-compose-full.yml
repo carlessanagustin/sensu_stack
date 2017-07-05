@@ -4,14 +4,31 @@ services:
 
   redis:
     image: redis:3.2-alpine
+    environment:
+      - ULIMIT=65536
     volumes:
       - ./configuration/redis:/usr/local/etc/redis:ro
       - ./data/redis:/data
     ports:
       - "6379:6379"
 
+#  rabbitmq:
+#    image: rabbitmq:3-alpine
+#    environment:
+#      - ULIMIT=65536
+#      - RABBITMQ_DEFAULT_VHOST=/sensu
+#      - RABBITMQ_DEFAULT_USER=sensu
+#      - RABBITMQ_DEFAULT_PASS=secret
+#    volumes:
+#      - ./data/rabbitmq:/var/lib/rabbitmq
+#    ports:
+#      - "4369"
+#      - "5671"
+#      - "5672"
+#      - "25672"
+
   rabbitmq:
-    image: rabbitmq:3-management-alpine
+    image: rabbitmq:3-alpine
     volumes:
       - ./configuration/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config
       - ./data/rabbitmq:/var/lib/rabbitmq
@@ -20,7 +37,6 @@ services:
       - "4369:4369"
       - "5671:5671"
       - "5672:5672"
-      - "15671:15671"
       - "25672:25672"
 
   sensu:
@@ -31,9 +47,7 @@ services:
 
   sensu-server:
     image: sensustack_sensu
-    #build: ./application/sensu-server/.
-    environment:
-      - LOG_LEVEL=debug
+    #image: sensu
     volumes:
       - ./configuration/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/sensu_ssl:ro
@@ -43,19 +57,9 @@ services:
       - rabbitmq
       - redis
 
-  sensu-client:
-    image: sensustack_sensu
-    #build: ./application/sensu-client/.
-    volumes:
-      - ./configuration/sensu:/etc/sensu
-      - ./sensu_ssl_tool:/etc/sensu_ssl:ro
-    command: ["/opt/sensu/bin/sensu-client", "-d", "/etc/sensu"]
-    depends_on:
-      - sensu
-      - rabbitmq
-
   sensu-api:
     image: sensustack_sensu
+    #image: sensu
     volumes:
       - ./configuration/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/sensu_ssl:ro
@@ -68,10 +72,20 @@ services:
      - "4567:4567"
 
   sensu-dashboard:
-    image: uchiwa/uchiwa
+    build: ./application/sensu-dashboard/.
     volumes:
-      - ./configuration/sensu-dashboard:/config
+      - ./configuration/sensu-dashboard:/etc/uchiwa
+    command: ["/opt/uchiwa/bin/uchiwa", "-c", "/etc/uchiwa/uchiwa.json"]
     depends_on:
       - sensu-api
     ports:
       - "3000:3000"
+
+#  sensu-client:
+#    #image: sensustack_sensu
+#    image: sensu
+#    volumes:
+#      - ./configuration/sensu:/etc/sensu
+#    command: ["/opt/sensu/bin/sensu-client", "-d", "/etc/sensu"]
+#    depends_on:
+#      - rabbitmq

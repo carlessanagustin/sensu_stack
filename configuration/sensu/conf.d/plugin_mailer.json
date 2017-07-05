@@ -1,0 +1,19 @@
+{
+  "mailer": {
+    "admin_gui": "http://127.0.0.1:3000/#/events",
+    "mail_from": "csanagustin@worldsensing.com",
+    "mail_to": "carles.sam@gmail.com",
+    "smtp_username": "<<smtpusername>>",
+    "smtp_password": "<<smtppassword>>",
+    "smtp_port": "587",
+    "smtp_address": "worldsensing.com",
+    "smtp_domain": "smtp-relay.gmail.com",
+    "smtp_enable_starttls_auto": "true"
+  },
+  "handlers": {
+    "mailer": {
+      "type": "pipe",
+      "command": "/usr/local/bin/handler-mailer.rb"
+    }
+  }
+}

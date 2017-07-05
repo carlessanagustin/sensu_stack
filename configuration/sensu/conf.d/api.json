@@ -1,7 +1,9 @@
 {
   "api": {
-    "host": "10.0.1.7",
-    "bind": "10.0.1.7",
-    "port": 4567
+    "host": "sensu-api",
+    "bind": "0.0.0.0",
+    "port": 4567,
+    "user": "sensu",
+    "password": "secret"
   }
 }

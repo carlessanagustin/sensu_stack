@@ -1,0 +1,22 @@
+{
+  "twiliosms": {
+    "token": "<<TWILIOTOKEN>>",
+    "sid": "<<TWILIOSID>>",
+    "number": "<<TWILIONUMBER>>",
+    "recipients": {
+      "+<<RECIPIENTNUMBER>>": {
+        "sensu_roles": [
+          "all"
+        ],
+        "sensu_checks": [],
+        "sensu_level": 1
+      }
+    }
+  },
+  "handlers": {
+    "twiliosms": {
+      "type": "pipe",
+      "command": "/var/lib/gems/1.9.1/gems/sensu-plugins-\r       twilio-0.0.3/bin/handler-twiliosms.rb"
+    }
+  }
+}

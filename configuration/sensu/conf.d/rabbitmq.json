@@ -2,6 +2,7 @@
   "rabbitmq": {
     "host": "rabbitmq",
     "port": 5672,
+    "heartbeat": 30,
     "vhost": "/sensu",
     "user": "sensu",
     "password": "secret"
