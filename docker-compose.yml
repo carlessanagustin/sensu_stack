@@ -31,8 +31,6 @@ services:
 
   sensu-server:
     image: sensustack_sensu
-    environment:
-      - LOG_LEVEL=debug
     volumes:
       - ./configuration/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/sensu_ssl:ro
