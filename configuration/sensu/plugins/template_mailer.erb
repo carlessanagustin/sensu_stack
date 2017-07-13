@@ -1,0 +1,14 @@
+<%= output %>
+Admin GUI: <%= admin_gui %>
+Host: <%= @event['client']['name'] %>
+Timestamp: <%= Time.at(@event['check']['issued']) %>
+Address:  <%= @event['client']['address'] %>
+Check Name:  <%= @event['check']['name'] %>
+Command:  <%= command %>
+Status:  <%= status_to_string %>
+Occurrences:  <%= @event['occurrences'] %>
+<%= playbook %>
+
+
+
+# add - "template": "/optional/path/to/template.erb" to mailer scope

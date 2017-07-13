@@ -3,3 +3,4 @@
 data/*
 application/ARCHIVE/*
 sensu_ssl_tool*
+*.log

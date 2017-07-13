@@ -1,5 +1,10 @@
 # NOT STABLE - Distributed Sensu monitoring stack via docker-compose
 
+## Next steps
+
+* add nginx container
+* add graphs: https://blog.powerupcloud.com/step-by-step-install-and-configure-sensu-grafana-9cedca333396
+
 ## Architecture
 
 ![images/sensu_architecture.png](images/sensu_architecture.png)
