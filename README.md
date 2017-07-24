@@ -1,16 +1,4 @@
-# NOT STABLE - Distributed Sensu monitoring stack via docker-compose
-
-# ADDING
-
-1. Graphite Carbon cache
-2. Whisper library ddbb
-3. MySQL ddbb
-4. Graphite web
-5. Grafana
-
-* following: https://blog.powerupcloud.com/step-by-step-install-and-configure-sensu-grafana-9cedca333396
-
-![full architecture](https://cdn-images-1.medium.com/max/1000/0*D8JnNU9lh0Po0GVv.png)
+# Distributed Sensu monitoring stack via docker-compose
 
 ## Architecture
 
