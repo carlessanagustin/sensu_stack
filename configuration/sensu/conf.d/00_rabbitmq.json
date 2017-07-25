@@ -8,8 +8,8 @@
     "user": "sensu",
     "password": "secret",
     "ssl": {
-      "cert_chain_file": "/etc/sensu_ssl/client/cert.pem",
-      "private_key_file": "/etc/sensu_ssl/client/key.pem"
+      "cert_chain_file": "/etc/ssl/client/cert.pem",
+      "private_key_file": "/etc/ssl/client/key.pem"
     }
   }
 }

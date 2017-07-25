@@ -15,7 +15,7 @@ services:
     volumes:
       - ./configuration/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config
       - ./data/rabbitmq:/var/lib/rabbitmq
-      - ./sensu_ssl_tool:/etc/sensu_ssl:ro
+      - ./sensu_ssl_tool:/etc/ssl:ro
     ports:
       - "4369:4369"
       - "5671:5671"
@@ -33,7 +33,7 @@ services:
     image: sensustack_sensu
     volumes:
       - ./configuration/sensu:/etc/sensu
-      - ./sensu_ssl_tool:/etc/sensu_ssl:ro
+      - ./sensu_ssl_tool:/etc/ssl:ro
     command: ["/opt/sensu/bin/sensu-server", "-d", "/etc/sensu"]
     depends_on:
       - sensu
@@ -44,7 +44,7 @@ services:
     image: sensustack_sensu
     volumes:
       - ./configuration/sensu:/etc/sensu
-      - ./sensu_ssl_tool:/etc/sensu_ssl:ro
+      - ./sensu_ssl_tool:/etc/ssl:ro
     command: ["/opt/sensu/bin/sensu-client", "-d", "/etc/sensu"]
     depends_on:
       - sensu
@@ -54,7 +54,7 @@ services:
     image: sensustack_sensu
     volumes:
       - ./configuration/sensu:/etc/sensu
-      - ./sensu_ssl_tool:/etc/sensu_ssl:ro
+      - ./sensu_ssl_tool:/etc/ssl:ro
     command: ["/opt/sensu/bin/sensu-api", "-d", "/etc/sensu"]
     depends_on:
       - sensu
@@ -67,7 +67,7 @@ services:
     image: uchiwa/uchiwa
     volumes:
       - ./configuration/sensu-dashboard:/config
-      - ./sensu_ssl_tool:/etc/sensu_ssl:ro
+      - ./sensu_ssl_tool:/etc/ssl:ro
     depends_on:
       - sensu-api
     ports:
