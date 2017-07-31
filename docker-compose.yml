@@ -71,4 +71,4 @@ services:
     depends_on:
       - sensu-api
     ports:
-      - "443:3000"
+      - "3000:3000"
