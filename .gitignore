@@ -1,7 +1,6 @@
 data*
-sensu_ssl_tool*
+sensu_ssl_tool
 
 .DS_Store
-*.tar
 application/ARCHIVE/*
 *.log

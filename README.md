@@ -4,6 +4,13 @@
 
 ![images/sensu_architecture.png](images/sensu_architecture.png)
 
+## Commands
+
+* Create & start: `./create.sh`
+* Start: `docker-compose up -d`
+* Stop: `docker-compose down`
+* Teardown: `./teardown.sh`
+
 ## Elements
 
 * Sensu
@@ -22,11 +29,6 @@
 * docker-compose
 * openssl
 * Run `./ssh_tool.sh` to get the SSL certificates
-
-## Run
-
-* Run: `docker-compose up -d`
-
 
 ## Reference Documentation
 
