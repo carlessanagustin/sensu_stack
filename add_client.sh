@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker-compose -f docker-compose.client.yml up -d
+docker-compose -p sensu -f docker-compose.client.yml up -d
