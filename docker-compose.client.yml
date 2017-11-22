@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  sensu_net:
+    external: true
+
+services:
+  sensu-client:
+    #image: sensustack_sensu
+    build: ./application/sensu-client/.
+    volumes:
+      - ./configuration/sensu:/etc/sensu
+      - ./sensu_ssl_tool:/etc/ssl:ro
+    command: ["/opt/sensu/bin/sensu-client", "-d", "/etc/sensu"]
+    #depends_on:
+    #  - sensu
+    #  - rabbitmq

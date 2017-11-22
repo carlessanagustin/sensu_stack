@@ -7,7 +7,7 @@ Organization="Example Co"
 Common_Name=www.example.com
 
 # https://sensuapp.org/docs/latest/reference/ssl.html
-sudo apt-get y install openssl
+#sudo apt-get y install openssl
 
 echo "step 1: generating system certificates"
 #wget http://sensuapp.org/docs/0.29/files/sensu_ssl_tool.tar
