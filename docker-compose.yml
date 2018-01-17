@@ -5,7 +5,7 @@ services:
   redis:
     image: redis:4-alpine
     volumes:
-      - ./configuration/redis:/usr/local/etc/redis:ro
+      - ./etc/redis:/usr/local/etc/redis:ro
       - ./data/redis:/data
     ports:
       - "6379:6379"
@@ -13,7 +13,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     volumes:
-      - ./configuration/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config
+      - ./etc/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config
       - ./data/rabbitmq:/var/lib/rabbitmq
       - ./sensu_ssl_tool:/etc/ssl:ro
     ports:
@@ -24,15 +24,15 @@ services:
       - "25672:25672"
 
   sensu:
-    build: ./application/sensu/.
+    build: ./build/sensu/.
     depends_on:
       - rabbitmq
       - redis
 
-  sensu-server:
+  sensu_server:
     image: sensustack_sensu
     volumes:
-      - ./configuration/sensu:/etc/sensu
+      - ./etc/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/ssl:ro
     command: ["/opt/sensu/bin/sensu-server", "-d", "/etc/sensu"]
     depends_on:
@@ -40,20 +40,20 @@ services:
       - rabbitmq
       - redis
 
-  sensu-client:
+  sensu_client:
     image: sensustack_sensu
     volumes:
-      - ./configuration/sensu:/etc/sensu
+      - ./etc/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/ssl:ro
     command: ["/opt/sensu/bin/sensu-client", "-d", "/etc/sensu"]
     depends_on:
       - sensu
       - rabbitmq
 
-  sensu-api:
+  sensu_api:
     image: sensustack_sensu
     volumes:
-      - ./configuration/sensu:/etc/sensu
+      - ./etc/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/ssl:ro
     command: ["/opt/sensu/bin/sensu-api", "-d", "/etc/sensu"]
     depends_on:
@@ -63,10 +63,10 @@ services:
     ports:
      - "4567:4567"
 
-  sensu-dashboard:
+  sensu_dashboard:
     image: uchiwa/uchiwa
     volumes:
-      - ./configuration/sensu-dashboard:/config
+      - ./etc/sensu-dashboard:/config
       - ./sensu_ssl_tool:/etc/ssl:ro
     depends_on:
       - sensu-api
