@@ -1,14 +1,17 @@
 version: '3'
 
-services:
+networks:
+  sensu_net:
+    driver: bridge
 
+services:
   redis:
     image: redis:4-alpine
     volumes:
       - ./etc/redis:/usr/local/etc/redis:ro
       - ./data/redis:/data
-    ports:
-      - "6379:6379"
+    expose:
+      - "6379"
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
@@ -40,16 +43,6 @@ services:
       - rabbitmq
       - redis
 
-  sensu_client:
-    image: sensustack_sensu
-    volumes:
-      - ./etc/sensu:/etc/sensu
-      - ./sensu_ssl_tool:/etc/ssl:ro
-    command: ["/opt/sensu/bin/sensu-client", "-d", "/etc/sensu"]
-    depends_on:
-      - sensu
-      - rabbitmq
-
   sensu_api:
     image: sensustack_sensu
     volumes:
@@ -60,8 +53,8 @@ services:
       - sensu
       - rabbitmq
       - redis
-    ports:
-     - "4567:4567"
+    expose:
+     - "4567"
 
   sensu_dashboard:
     image: uchiwa/uchiwa
