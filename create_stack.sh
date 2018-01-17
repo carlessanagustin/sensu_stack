@@ -1,4 +1,4 @@
 #!/bin/bash
 
 bash ssl_tool.sh
-source run_server.sh
+source start_stack.sh

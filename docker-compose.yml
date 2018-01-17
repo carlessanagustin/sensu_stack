@@ -62,6 +62,6 @@ services:
       - ./etc/sensu-dashboard:/config
       - ./sensu_ssl_tool:/etc/ssl:ro
     depends_on:
-      - sensu-api
+      - sensu_api
     ports:
       - "3000:3000"

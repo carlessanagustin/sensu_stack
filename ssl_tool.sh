@@ -12,6 +12,7 @@ Common_Name=www.example.com
 echo "step 1: generating system certificates"
 #wget http://sensuapp.org/docs/0.29/files/sensu_ssl_tool.tar
 tar -xvf sensu_ssl_tool.tar
+mkdir -p sensu_ssl_tool
 cd sensu_ssl_tool
 ./ssl_certs.sh generate
 

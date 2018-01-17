@@ -2,7 +2,7 @@
   "sensu": [
     {
       "name": "Sensu API 1",
-      "host": "sensu-api",
+      "host": "sensu_api",
       "port": 4567,
       "ssl": false,
       "timeout": 10,
