@@ -1,13 +1,15 @@
 version: '3'
 
 networks:
-  sensu_net:
+  sensustack_public:
     external: true
 
 services:
-  sensu-client:
-    image: sensustack_sensu
+  sensu_client:
+    image: stack_sensu
     volumes:
-      - ./configuration/sensu:/etc/sensu
+      - ./etc/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/ssl:ro
     command: ["/opt/sensu/bin/sensu-client", "-d", "/etc/sensu"]
+    networks:
+      - sensustack_public

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker-compose -p sensu down
+docker-compose down

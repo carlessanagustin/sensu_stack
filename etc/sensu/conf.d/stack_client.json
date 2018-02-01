@@ -1,7 +1,7 @@
 {
   "client": {
-    "name": "sensu-client",
-    "address": "sensu-client",
+    "name": "sensu_client",
+    "address": "sensu_client",
     "subscriptions": [
       "basic"
     ],

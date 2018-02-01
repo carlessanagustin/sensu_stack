@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker-compose -p sensu up -d
+docker-compose up -d
