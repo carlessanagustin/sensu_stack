@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "check_ram": {
+      "command": "/opt/sensu/embedded/bin/check-checksums.rb -f /etc/passwd -h 9eff575b4a42e584f95ead5620662d5083a7939c7cee9d7032d9b469014e02b",
+      "interval": 30,
+      "subscribers": [
+        "basic"
+      ],
+      "handlers": [
+        "mailer"
+      ]
+    }
+  }
+}

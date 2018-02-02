@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "check_ram": {
+      "command": "/opt/sensu/embedded/bin/check-uptime.rb -w 1", 
+      "interval": 30,
+      "subscribers": [
+        "basic"
+      ],
+      "handlers": [
+        "mailer"
+      ]
+    }
+  }
+}
