@@ -1,0 +1,24 @@
+[
+        { rabbit, [
+                { loopback_users, [ ] },
+                { ssl_listeners, [ {"0.0.0.0", 5671} ] },
+                { ssl_options, [{cacertfile,"/etc/ssl/sensu_ca/cacert.pem"},
+                               {certfile,"/etc/ssl/server/cert.pem"},
+                               {keyfile,"/etc/ssl/server/key.pem"},
+                               {versions, ['tlsv1.2']},
+                               {ciphers,  [{rsa,aes_256_cbc,sha256}]},
+                               {verify,verify_peer},
+                               {fail_if_no_peer_cert,true}] },
+                { default_pass, <<"secret">> },
+                { default_user, <<"sensu">> },
+                { default_vhost, <<"/sensu">> },
+                { hipe_compile, false }
+        ] },
+        { rabbitmq_management, [ { listener, [
+        {port,     15671},
+                     {ssl,      true},
+                     {ssl_opts, [{cacertfile,"/etc/ssl/sensu_ca/cacert.pem"},
+                                 {certfile,"/etc/ssl/server/cert.pem"},
+                                 {keyfile,"/etc/ssl/server/key.pem"}]}
+        ] } ] }
+].

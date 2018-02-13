@@ -6,7 +6,7 @@ networks:
 
 services:
   sensu_client:
-    image: stack_sensu
+    image: sensustack_sensu
     volumes:
       - ./etc/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/ssl:ro
