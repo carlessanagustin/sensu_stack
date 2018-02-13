@@ -18,7 +18,8 @@ services:
       - private
 
   rabbitmq:
-    image: rabbitmq:3-management-alpine
+    #image: rabbitmq:3-management-alpine
+    image: rabbitmq:3.6.9-management-alpine
     volumes:
       - ./etc/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config
       - ./data/rabbitmq:/var/lib/rabbitmq
@@ -39,7 +40,7 @@ services:
       - redis
 
   sensu_server:
-    image: stack_sensu
+    image: sensustack_sensu
     volumes:
       - ./etc/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/ssl:ro
@@ -53,7 +54,7 @@ services:
       - public
 
   sensu_api:
-    image: stack_sensu
+    image: sensustack_sensu
     volumes:
       - ./etc/sensu:/etc/sensu
       - ./sensu_ssl_tool:/etc/ssl:ro
