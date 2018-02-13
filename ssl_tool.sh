@@ -6,11 +6,11 @@ Locality=Barcelona
 Organization="Example Co"
 Common_Name=www.example.com
 
-# https://sensuapp.org/docs/latest/reference/ssl.html
-#sudo apt-get y install openssl
-
+# INSTRUCTIONS - https://sensuapp.org/docs/latest/reference/ssl.html
 echo "step 1: generating system certificates"
-#wget http://sensuapp.org/docs/0.29/files/sensu_ssl_tool.tar
+#sudo apt-get y install openssl
+rm -f sensu_ssl_tool.tar
+wget http://sensuapp.org/docs/1.2/files/sensu_ssl_tool.tar
 tar -xvf sensu_ssl_tool.tar
 mkdir -p sensu_ssl_tool
 cd sensu_ssl_tool
